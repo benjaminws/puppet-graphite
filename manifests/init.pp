@@ -15,7 +15,6 @@ define pipinstall () {
   exec {$title:
     command => "/usr/bin/pip install ${title}",
     unless  => "/usr/bin/pip freeze | grep  ${title}",
-    require => Package['python-pip'],
   }
 }
 
