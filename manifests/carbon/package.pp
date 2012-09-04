@@ -12,7 +12,6 @@
 #
 # [Remember: No empty lines between comments and class definition]
 class graphite::carbon::package {
-  package {'carbon':
-    ensure => present;
+  pipinstall {'carbon':
   }
 }

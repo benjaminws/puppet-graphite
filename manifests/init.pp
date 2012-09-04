@@ -10,11 +10,19 @@
 #
 # * Implement user creation.
 #
+
+define pipinstall () {
+  exec {$title:
+    command => "/usr/bin/pip install ${title}",
+    unless  => "/usr/bin/pip freeze | grep  ${title}",
+    require => Package['python-pip'],
+  }
+}
+
 class graphite{
 
   include graphite::carbon
   include graphite::whisper
-  include graphite::web
 
 }
 
