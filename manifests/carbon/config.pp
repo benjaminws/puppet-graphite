@@ -13,16 +13,23 @@
 # [Remember: No empty lines between comments and class definition]
 class graphite::carbon::config {
   include concat::setup
-  concat { '/etc/carbon/storage-schemas.conf':
-    group   => '0',
-    mode    => '0644',
-    owner   => '0',
-    notify  => Service['carbon'];
+
+   file { "/etc/carbon/":
+     ensure => directory,
+     owner => "0",
+     group => "0",
+   }
+
+  concat { "/etc/carbon/storage-schemas.conf":
+    group   => "0",
+    mode    => "0644",
+    owner   => "0",
+    notify  => Service["carbon"];
   }
-  concat::fragment { 'header':
-    target  => '/etc/carbon/storage-schemas.conf',
+  concat::fragment { "header":
+    target  => "/etc/carbon/storage-schemas.conf",
     order   => 0,
-    source  => 'puppet:///modules/graphite/storage-schemas.conf'
+    source  => "puppet:///modules/graphite/storage-schemas.conf"
   }
 
 
