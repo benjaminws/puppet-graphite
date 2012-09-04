@@ -14,11 +14,11 @@
 class graphite::carbon::config {
   include concat::setup
 
-   file { "/etc/carbon/":
-     ensure => directory,
-     owner => "0",
-     group => "0",
-   }
+  file { "/etc/carbon/":
+    ensure => directory,
+    owner => "0",
+    group => "0",
+  }
 
   concat { "/etc/carbon/storage-schemas.conf":
     group   => "0",
