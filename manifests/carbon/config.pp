@@ -14,22 +14,22 @@
 class graphite::carbon::config {
   include concat::setup
 
-  file { "/etc/carbon/":
+  file { '/etc/carbon/':
     ensure => directory,
-    owner => "0",
-    group => "0",
+    owner => '0',
+    group => '0',
   }
 
-  concat { "/etc/carbon/storage-schemas.conf":
-    group   => "0",
-    mode    => "0644",
-    owner   => "0",
-    notify  => Service["carbon"];
+  concat { '/etc/carbon/storage-schemas.conf':
+    group   => '0',
+    mode    => '0644',
+    owner   => '0',
+    notify  => Service['carbon-cache'];
   }
-  concat::fragment { "header":
-    target  => "/etc/carbon/storage-schemas.conf",
+  concat::fragment { 'header':
+    target  => '/etc/carbon/storage-schemas.conf',
     order   => 0,
-    source  => "puppet:///modules/graphite/storage-schemas.conf"
+    source  => 'puppet:///modules/graphite/storage-schemas.conf'
   }
 
 
