@@ -16,6 +16,5 @@ class graphite::web ($time_zone = undef) {
   class {'graphite::web::config':
     time_zone => $time_zone,
   }
-  include graphite::web::service
 }
 
